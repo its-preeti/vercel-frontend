@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "./apiAuth";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +19,10 @@ function Login() {
 
       alert(res.data.message);
       console.log(res.data);
+
+      // 🔥 redirect after successful login
+      navigate("/register"); 
+      // 👉 better: navigate("/home") or "/dashboard"
     } catch (error) {
       console.error(error);
       alert("Login Failed");
@@ -24,10 +30,10 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <div className="container">
-        <h2>Login page</h2>
+    <div>
+      <h2>Login Page</h2>
 
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Email"
@@ -35,6 +41,7 @@ function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+
         <br />
         <br />
 
@@ -45,6 +52,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
         <br />
         <br />
 
@@ -58,8 +66,8 @@ function Login() {
           Don't have an account?{" "}
           <Link to="/register">Register</Link>
         </p>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
