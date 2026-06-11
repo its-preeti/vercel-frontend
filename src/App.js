@@ -11,12 +11,12 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<ForgotPassword />} />
-      </Routes>
+    </Routes>
     </BrowserRouter>
+    );
+  }
+   export default App;
 
-  );
-}
 
-export default App;
 
 

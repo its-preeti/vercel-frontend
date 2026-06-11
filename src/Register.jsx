@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 
 function Register() {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    alert("Button Clicked");
+  };
   return (
+    <form on onSubmit={handleLogin}>
     <div className= "container">
       <h2>Register page </h2>
 
@@ -14,12 +19,13 @@ function Register() {
       <input type="forgotpassword" placeholder="Password" />
       <br /><br />
 
-      <button>Register</button>
+      <button type="submit">Register</button>
 
       <p>
         Already have an account? <Link to="/">Login</Link>
       </p>
     </div>
+    </form>
   );
 }
 
