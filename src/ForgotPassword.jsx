@@ -1,49 +1,49 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { forgotPassword } from "./apiAuth";
 
 function ForgotPassword() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
 
-  const handleForgotPassword = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await forgotPassword({
-        email,
-      });
+      const res = await forgotPassword({ email });
 
       alert(res.data.message);
-      console.log(res.data);
+
+      // 🔥 after reset request
+      navigate("/"); // login page
     } catch (error) {
-      console.error(error);
-      alert("Request Failed");
+      console.log(error);
+      alert("Error in resetting password");
     }
   };
 
   return (
-    <form onSubmit={handleForgotPassword}>
-      <div className="container">
-        <h2>Forgot Password</h2>
+    <div>
+      <h2>Forgot Password</h2>
 
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Enter Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
 
-        <br />
-        <br />
+        <br /><br />
 
         <button type="submit">Send Reset Link</button>
+      </form>
 
-        <p>
-          <Link to="/">Back to Login</Link>
-        </p>
-      </div>
-    </form>
+      <p>
+        Back to <Link to="/">Login</Link>
+      </p>
+    </div>
   );
 }
 
