@@ -30,7 +30,10 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="auth-container">
+
+      <div className="auth-box">
+    
       <h2>Register Page</h2>
 
       <form onSubmit={handleRegister}>
@@ -67,6 +70,7 @@ function Register() {
       <p>
         Already have an account? <Link to="/">Login</Link>
       </p>
+    </div>
     </div>
   );
 }

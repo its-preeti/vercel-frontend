@@ -30,7 +30,11 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="auth-container">
+
+      <div className="auth-box">
+
+    
       <h2>Login Page</h2>
 
       <form onSubmit={handleLogin}>
@@ -67,6 +71,7 @@ function Login() {
           <Link to="/register">Register</Link>
         </p>
       </form>
+    </div>
     </div>
   );
 }
