@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://vercel-backend-olive-ten.vercel.app/";
-
+const API_URL = "https://vercel-backend-olive-ten.vercel.app";
 export const loginUser = (data) => {
   return axios.post(`${API_URL}/login`, data);
 };
