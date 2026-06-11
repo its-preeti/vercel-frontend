@@ -24,7 +24,10 @@ function ForgotPassword() {
   };
 
   return (
-    <div>
+    <div className="auth-container">
+
+      <div className="auth-box">
+    
       <h2>Forgot Password</h2>
 
       <form onSubmit={handleSubmit}>
@@ -43,6 +46,7 @@ function ForgotPassword() {
       <p>
         Back to <Link to="/">Login</Link>
       </p>
+    </div>
     </div>
   );
 }
